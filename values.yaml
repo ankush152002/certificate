@@ -1,0 +1,24 @@
+replicaCount: 1
+
+image:
+  repository: us-central1-docker.pkg.dev/end-to-end-project-438607/node-apps/hello-world-app5
+  tag: 1fa5a8598896df10e705995515cb92f85b492a76
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 3004
+
+serviceAccount:
+  create: true
+  name: ""
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 80
+
+ingress:
+  enabled: false
